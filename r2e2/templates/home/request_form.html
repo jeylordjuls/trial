@@ -1,0 +1,82 @@
+
+<!DOCTYPE html>
+{% load static %}
+<html>
+   <head>
+      <title> R2E2 || Room Reservation Request </title>
+      <link type = "text/css" rel = "stylesheet" href = "{% static "boxui.css" %}">
+   </head>
+   <body>
+      <div id = "header">
+         <p id = "headerTitle">R2E2 : Room Reservation Itu!</p>
+         <p id = "headerSub">UP Department of Computer Science</p>
+      </div>
+
+      <div id = "main_left">
+         <a href = "">
+            <div id = "user">
+               <p id = "orgname">{{user.username}}</p>
+               <p id = "type">{{profile.userType}}</p>
+            </div>
+         </a>
+         <a href = "" class = "choice">
+            <div><p>View Rooms</p></div>
+         </a>
+          <a href = "" class = "choice">
+            <div><p>New Reservation</p></div>
+         </a>
+         <a href = "" class = "choice">
+            <div><p>Status Reservation</p></div>
+         </a>
+         <a href = "" class = "choice">
+            <div><p>Account Details</p></div>
+         </a>
+         <a href = "/login/" class = "choice">
+            <div><p>Log Out</p></div>
+         </a>
+      </div>
+      <div id = "main_right">
+         <div id = "appForm"><p>APPLICATION FORM FOR THE USE OF DCS ROOMS</p></div>
+	<form id="reserve_form" method="post" action="/home/add_reservation/"
+                enctype="multipart/form-data">
+		{% csrf_token %}
+         <div class = "division">
+            <p class = "description">NAME OF EVENT</p>
+            <input type = "text" id = "id_eventName" name = "eventName" class = "textInput">
+         </div>
+         <div class = "division">
+            <p class = "description">ROOM TO BE USED</p>
+            <form action="#" type="get">
+              <select data-toggle = "dropdown" id = "id_room" name = "room" class = "dropDown textInput">
+                {% for room in rooms %}
+                  <option value="{{ room }}"> {{ room }}</option>
+                {% endfor %}
+              </select>
+            </form>
+         </div>
+         <div class = "division">
+            <p class = "description">DATE</p>
+            <input type = "date" id = "id_date" name = "date" class = "textInput">
+         </div>
+         <div class = "division">
+            <p class = "description">TIME</p>
+            <input type = "time" id = "id_startTime" name = "startTime" class = "time_participants textInput">
+            <p style = "font-size: 1em; font-family: Nexa Bold; color: black; display: inline-block">to</p>
+            <input type = "time" id = "id_endTime" name = "endTime" class = "time_participants textInput">
+         </div>
+         <div class = "division">
+            <p class = "description">NUMBER OF PARTICIPANTS</p>
+            <input type = "number" id = "id_partiNumber" name = "partiNumber" class = "time_participants textInput">
+         </div>
+         <div class = "division">
+            <p class = "description">PURPOSE</p>
+            <input type = "text" id = "id_purpose" name = "purpose" class = "textInput">
+         </div>
+         <div class = "division" style = "   border-bottom: none">
+            <a href = ""> <div class = "button"> SUBMIT </div> </a>
+         </div>
+	<input type="submit" name="submit" value="addEvent">
+	</form>
+      </div>
+   </body>
+</html>

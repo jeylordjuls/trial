@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+{% load static %}
+
+<html>
+   <head>
+      <title> R2E2 || Log-in </title>
+      <link type = "text/css" rel = "stylesheet" href = "{% static "boxui.css" %}">
+   </head>
+   <body style = "background-color: white">
+
+     <div class="login-screen">
+       <div class="login-icon">
+         <img src="R2E2.png" alt="Welcome to Mail App">
+         <h4>WELCOME TO <small>R2E2</small></h4>
+       </div>
+
+       <div class="login-form">
+          <div style=  "height: 1.5em;background: #db8
+          f3b;margin-bottom: 30px;">
+             <p style= "margin: .75em 0.5em 0em 0.5em; font-size: 1.2em;color: white; font-family: Nexa Bold;" id = "headerTitle">Room Reservation Itu!</p>
+          </div>
+             <div>
+            <div class="form-group">
+            <form id="login_form" method="post" action="/login/">
+            {% csrf_token %} 
+              <input type="text" name="username" class="form-control login-field" value="" placeholder="Enter your user name" id="login-name">
+              <label class="login-field-icon fui-user" for="login-name"></label>
+            </div>
+
+            <div class="form-group">
+              <input type="password" name="password" class="form-control login-field" value="" placeholder="Password" id="login-pass">
+              <label class="login-field-icon fui-lock" for="login-pass"></label>
+            </div>
+            
+            <div id= "log-in-button">
+             <input type="submit" value="Log in" class="btn btn-primary btn-lg btn-block"/></a>
+           </div>
+
+            </form>
+
+            
+          </div>
+       </div>
+     </div>
+   </div>
+   </body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+    <head>
+        <title> R2E2 || Room Reservation Request </title>
+      <link type = "text/css" rel = "stylesheet" href = "{% static "boxui.css" %}">
+   </head>
+
+    <body>
+        <div id = "header">
+         <p id = "headerTitle">R2E2 : Room Reservation Itu!</p>
+         <p id = "headerSub">UP Department of Computer Science</p>
+      </div>
+
+      <div id = "main_left">
+         <a href = "">
+            <div id = "user">
+               <p id = "orgname">{{user.username}}</p>
+               <p id = "type">{{profile.userType}}</p>
+            </div>
+         </a>
+        {% if profile.userType != 'System Administrator' %}
+             <a href = "/home/reservation_lists1/" class = "choice">
+                <div><p>View Reserve Rooms</p></div>
+             </a>
+        {% endif %}
+         {% if profile.userType = 'System Administrator' %}
+                <a href = "/home/user_lists/" class = "choice">
+            <div><p>List of Users</p></div>
+             </a>
+              <a href = "/home/reservation_lists/" class = "choice">
+                <div><p>List of Reservations</p></div>
+             </a>
+         {% endif %}
+         <a href = "/home/add_reservation/" class = "choice">
+            <div><p>Reserve Rooms</p></div>
+         </a>
+    {% if profile.userType = 'System Administrator' %}
+        <a href = "/home/add_user/" class = "choice">
+                <div><p>Add User</p></div>
+             </a>
+        <a href = "/home/add_room/" class = "choice">
+                <div><p>Add Rooms</p></div>
+             </a>
+    {% endif %}
+  <a href = "/login/" class = "choice">
+            <div><p>Log Out</p></div>
+         </a>
+      </div>
+      <div id = "main_right">
+         <div id = "appForm"><p>APPLICATION FORM FOR THE USE OF DCS ROOMS</p></div>
+        <form id="reserve_form" method="post" action="/home/add_reservation/" enctype="multipart/form-data">
+
+           {% csrf_token %}
+            <div class = "division">
+            <p class = "description">NAME OF EVENT<label for="id_eventName"></label></p>
+            <input id="id_eventName" maxlength="30" name="eventName" type="text" class = "textInput">
+            </div>
+            <div class = "division">
+            <p class = "description">NUMBER OF PARTICIPANTS<label for="id_partiNumber"></label></p><input id="id_partiNumber" name="partiNumber" type="number" class = "time_participants textInput">
+            </div>
+            <div class = "division">
+            <p class = "description">ROOM TO BE USED<label for="id_room"></label></p><select id="id_room" name="room" class = "dropDown textInput">
+            <option value="" selected="selected">---------</option>
+            {% for room in rooms %}
+            <option value="{{room.id}}">{{room}}</option>
+            {% endfor %}
+            </select>
+            </div>
+            <div class = "division">
+            <p class = "description"><label for="id_startTime">TIME</label> </p><input id="id_startTime" name="startTime" type="time" class = "time_participants textInput">
+            <p style = "font-size: 1em; font-family: Nexa Bold; color: black; display: inline-block">to</p>
+            <p class = "description"><label for="id_endTime"></label></p><input id="id_endTime" name="endTime" type="time" class = "time_participants textInput"> </div>
+            <div class = "division">
+            <p class = "description"><label for="id_date">DATE</label></p><input id="id_date" name="date" type="date" class = "textInput"></div>
+            <div class = "division">
+            <p class = "description"><label for="id_purpose">PURPOSE</label></p><input id="id_purpose" maxlength="50" name="purpose" type="text" class = "textInput"> </div>
+            <!---->
+        <!---->
+
+            <!-- Provide a button to click to submit the form. -->
+            <div class = "division">
+            <p class = "description"> <input type="submit" name="submit" value="Add Reservation"> </p> </div>
+        </form>
+    </body>
+</html>
