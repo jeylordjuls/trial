@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+{% load static %}
+<html>
+   <head>
+      <title> R2E2 || List of Reservations </title>
+      <link type = "text/css" rel = "stylesheet" href = "{% static "boxui.css" %}">
+   </head>
+   <body>
+      <div id = "header">
+         <p id = "headerTitle">R2E2 : Room Reservation Itu!</p>
+         <p id = "headerSub">UP Department of Computer Science</p>
+      </div>
+
+      <div id = "main_left">
+         <a href = "">
+            <div id = "user">
+               <p id = "orgname">{{user.username}}</p>
+               <p id = "type">{{profile.userType}}</p>
+            </div>
+         </a>
+              
+          <a href = "/users/reservations/reservation_lists1" class = "choice">
+            <div><p>View Reserve Rooms</p></div>
+         </a>
+         <a href = "/users/reservations/add_reservation" class = "choice">
+            <div><p>Reserve Rooms</p></div>
+         </a>
+  <a href = "/users/login" class = "choice">
+            <div><p>Log Out</p></div>
+         </a>
+      </div>
+      <div id = "main_right" style = "padding: 0em;">
+         <table >
+           <tr>
+            <th>Name of Event</th>
+            <th>Room to be Used</th> 
+            <th>Date</th>
+            <th>Time</th>
+            <th>Number of Participants</th>
+            <th>Purpose</th>
+            <th>Status</th>
+           </tr>
+           <a href = "/home/request_details.html/">
+            {% for objects in requests %}
+              
+             
+                 <tr>
+                    <td><a>{{ objects.eventName }}</a></td>
+                    <td><a>{{ objects.room}}</a></td> 
+                    <td><a>{{ objects.date}}</a></td>
+                    <td><a>{{ objects.startTime}} - {{ objects.endTime}}</a></td>
+                    <td><a>{{ objects.partiNumber }}</a></td>
+                    <td><a>{{ objects.purpose }}</a></td>
+                  
+                    {% if objects.tag == 0 %}
+
+                    <td><a href = "/home/request_details/{{ objects.id }}"> Pending </a></td>
+                    {% endif %}
+                    
+                    {% if objects.tag == 1 %}
+
+                    <td><a href = "/home/request_details/{{ objects.id }}"> Approved </a></td>
+                    {% endif %}
+
+                    {% if objects.tag == 2 %}
+                    
+                    <td><a href = "/home/request_details/{{ objects.id }}"> Disapproved </a></td>
+                    {% endif %}
+
+                 </tr>
+              
+            {% endfor %}
+           </a>
+         </table>
+      </div>
+   </body>
+</html>

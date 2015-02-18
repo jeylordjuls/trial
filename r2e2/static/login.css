@@ -1,0 +1,94 @@
+@font-face {
+  font-family: 'Nexa Bold';
+  font-style: bold;
+  font-weight: 900;
+
+  src: url('Fonts/Nexa Bold.eot');
+  src: url('Fonts/Nexa Bold.eot?#iefix') format('embedded-opentype'), url('Fonts/Nexa Bold.woff') format('woff'), url('Fonts/Nexa Bold.ttf') format('truetype'), url('Fonts/Nexa Bold.svg') format('svg');
+}
+
+@font-face {
+  font-family: 'Nexa Light';
+  font-style: normal;
+  font-weight: 900;
+
+  src: url('Fonts/Nexa Light.eot');
+  src: url('Fonts/Nexa Light.eot?#iefix') format('embedded-opentype'), url('Fonts/Nexa Light.woff') format('woff'), url('Fonts/Nexa Light.ttf') format('truetype'), url('Fonts/Nexa Light.svg') format('svg');
+}
+
+#system-name {
+	width: 100%;
+	height: 30em;
+	background-color: #22313f;
+	border-bottom-width: 3em;
+	border-bottom: thick solid #eb9532;
+}
+
+#system-name h6 {
+	font-family: Nexa Light;
+	color: #C6C6C6;
+	text-align: center;
+}
+
+#system-name h3 {
+	font-family: Nexa Bold;
+	color: white;
+	text-align: center;
+	padding-top: 2em;
+}
+
+#system-name p {
+	font-family: Nexa Light;
+	color: #eb9532;
+	text-align: center;
+	font-size: 1.2em;
+	padding-top: 2em;
+}
+
+#username {
+	text-align: center;
+}
+
+#password {
+	text-align: center;
+}
+
+.announcement-section {
+	width: 30%;
+	float: left;
+	border: 2px solid #C6C6C6;
+	margin: 4.5em 0em 3em 6em;
+	padding: 2em 2em 2em 2em;
+}
+
+.announcement-section #announcement-header {
+	color: #eb9532;
+	font-size: 1.5em;
+	font-family: Nexa Light;
+	text-align: left;
+}
+
+.announcement-p {
+	color: #ecf0f1;
+	font-size: 0.9em;
+	font-family: Nexa Light;
+	text-align: left;
+}
+
+.how-to-reserve img {
+	max-width: 100%;
+	max-height: auto;
+}
+
+#log-in-button {
+	text-align: center;
+}
+
+*{
+	margin: 0em;
+}
+
+body {
+	margin: 0em;
+}
+
